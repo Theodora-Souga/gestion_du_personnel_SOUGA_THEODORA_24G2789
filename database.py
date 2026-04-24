@@ -1,3 +1,4 @@
+import sqlite3
 import os
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DB_NAME = os.path.join(BASE_DIR, "personnel.db")
@@ -5,7 +6,7 @@ DB_NAME = os.path.join(BASE_DIR, "personnel.db")
 
 def init_db():
     """Crée la table si elle n'existe pas."""
-    conn = os.connect(DB_NAME)
+    conn = sqlite3.connect(DB_NAME)
     cursor = conn.cursor()
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS personnel (
